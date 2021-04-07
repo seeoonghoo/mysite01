@@ -42,3 +42,30 @@ def logout(request):
     del request.session["authuser"]
     # 저기에 넣어놨던 정보를 지우니까 계속 요청을 해도 암것도 없으니까 로그아웃됨
     return HttpResponseRedirect('/')
+
+def updateform(request):
+    # Access Control(접근 제어)
+    if 'authuser' not in request.session:
+        return HttpResponseRedirect('/')
+
+    authuser = request.session["authuser"]
+    result = models.findbyno(authuser["no"])
+
+    data = {'data': result}
+
+    return render(request, 'user/updateform.html',data)
+
+def update(request):
+
+    authuser = request.session["authuser"]
+    no = authuser["no"]
+    name = request.POST["name"]
+    password = request.POST["password"]
+    gender = request.POST["gender"]
+
+    models.update(name,password,gender,no)
+
+    result = models.findbyno(authuser["no"])
+    request.session["authuser"] = result
+
+    return HttpResponseRedirect('updateform')
