@@ -16,6 +16,7 @@ Including another URLconf
 from django.urls import path
 import main.views as mainviews
 import guestbook.views as guestbookviews
+import user.views as userviews
 
 urlpatterns = [
     path('', mainviews.index),
@@ -24,4 +25,11 @@ urlpatterns = [
     path('guestbook/add', guestbookviews.add),
     path('guestbook/deleteform', guestbookviews.deleteform),
     path('guestbook/delete', guestbookviews.delete),
+
+    path('user/joinform',userviews.joinform),
+    path('user/join',userviews.join),
+    path('user/joinsuccess', userviews.joinsuccess),
+    path('user/loginform', userviews.loginform),
+    path('user/login', userviews.login),
+    path('user/logout', userviews.logout)
 ]

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'guestbook',
     'main',
     'mathfilters',
+    'user',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -123,5 +124,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'statics'),
 )
 STATIC_URL = '/assets/'
-
 #이제 assets로 접근하면 위의 staticfiles_dir 에서 찾음
+
+
+# session cookie(csrftoken) stored in memory
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# 이러면 쿠키에 저장을 할 때 디스크가 아닌 메모리에 저장하게 됨.
+# 이게 없으면 디스크에 저장되어 브라우저를 껐다가 켜도 그대로 로그인 되어 있음
+# 웹에서 세션은 세션 객체가 같은 애들을 뜻함.
