@@ -285,5 +285,3 @@ def search(request):
     }
 
     return render(request, 'board/search.html', data)
-
-
