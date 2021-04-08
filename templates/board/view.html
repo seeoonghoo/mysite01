@@ -26,7 +26,7 @@
 				<div class="bottom">
 					<a href="/board">글목록</a>
 					{% if authuser.no == viewlist.user_no %}
-					<a href="/updateform">글수정</a>
+					<a href="/board/updateform/?no={{no}}">글수정</a>
 					{% endif %}
 					{% if authuser.no != 0 %}
 					<a href="">답글</a>
