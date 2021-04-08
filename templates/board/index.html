@@ -24,7 +24,11 @@
 					{% for board in boardlist %}
 					<tr>
 						<td>{{ presentmaxindex | sub:forloop.counter | add:1 }}</td>
+						{% if board.depth == 0 %}
 						<td><a href="/board/view/?no={{board.no}}" style="text-align:left; padding-left:0px">{{ board.title }}</a></td>
+						{% else %}
+						<td><a href="/board/view/?no={{board.no}}" style="text-align:left; padding-left:{{ board.depth | mul:30 }}px"><img src="/assets/images/reply.png" />{{ board.title }}</a></td>
+						{% endif %}
 						<td>{{ board.name }}</td>
 						<td>{{ board.hit }}</td>
 						<td>{{ board.reg_date }}</td>
