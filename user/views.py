@@ -18,7 +18,7 @@ def join(request):
 
     models.insert(name, email, password, gender)
 
-    return HttpResponseRedirect('/user/joinsuccess.html')
+    return HttpResponseRedirect('/user/joinsuccess')
 
 def loginform(request):
     return render(request, 'user/loginform.html')

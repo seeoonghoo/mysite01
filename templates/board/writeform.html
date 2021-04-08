@@ -6,7 +6,7 @@
 
 {% block contents %}
 			<div id="board">
-				<form class="board-form" method="post" action="/board">
+				<form class="board-form" method="post" action="/board/write">
 					{% csrf_token %}
 					<input type = "hidden" name = "a" value="write">
 					<table class="tbl-ex">
@@ -20,7 +20,7 @@
 						<tr>
 							<td class="label">내용</td>
 							<td>
-								<textarea id="content" name="content"></textarea>
+								<textarea id="content" name="contents"></textarea>
 							</td>
 						</tr>
 					</table>

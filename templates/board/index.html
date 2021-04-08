@@ -24,11 +24,15 @@
 					{% for board in boardlist %}
 					<tr>
 						<td>{{ presentmaxindex | sub:forloop.counter | add:1 }}</td>
-						<td><a href="" style="text-align:left; padding-left:0px">{{ board.title }}</a></td>
+						<td><a href="/board/view/?no={{board.no}}" style="text-align:left; padding-left:0px">{{ board.title }}</a></td>
 						<td>{{ board.name }}</td>
 						<td>{{ board.hit }}</td>
 						<td>{{ board.reg_date }}</td>
+						{% if authuser.no == board.user_no %}
 						<td><a href="/board/deleteform?no={{board.no}}" class="del">삭제</a></td>
+						{% else %}
+						<td></td>
+						{% endif %}
 					</tr>
 					{% endfor %}
 				</table>
@@ -62,7 +66,9 @@
 				<!-- pager 추가 -->
 				
 				<div class="bottom">
+					{% if authuser.no != 0 %}
 					<a href="/board/writeform" id="new-book">글쓰기</a>
+					{% endif %}
 				</div>				
 			</div>
 {% endblock %}
