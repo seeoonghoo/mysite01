@@ -80,10 +80,11 @@ def view(request):
     else:
         authuser = request.session["authuser"]
         authresult = models.findbyno(authuser["no"])
-
+    page = request.GET.get("p")
     data = { "viewlist" : result,
              "authuser" : authresult,
-             "no" : no}
+             "no" : no,
+             "page" : page}
 
     return render(request,'board/view.html', data)
 
