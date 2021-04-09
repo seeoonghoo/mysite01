@@ -15,9 +15,9 @@ def index(request):
 def add(request):
     name = request.POST["name"]
     password = request.POST["password"]
-    content = request.POST["content"]
+    message = request.POST["message"]
 
-    models.insert(name, password, content)
+    models.insert(name, password, message)
 
     return HttpResponseRedirect("/guestbook")
 
